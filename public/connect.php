@@ -10,10 +10,12 @@ $link_login = "http://blackieNetworks.com/login";
 $link_login_only = "http://blackieNetworks.com/login";
 $linkorig = "https://www.google.com";
 
-$remainingTime = isset($_POST['remainingTime']) ? intval($_POST['remainingTime']) : 0;
-$phoneNumber = isset($_POST['phoneNumber']) ? $_POST['phoneNumber'] : "";
-$identity = isset($_POST['routername']) ? $_POST['routername'] : "";
+$phoneNumber = isset($_SESSION['phoneNumber']) ? $_SESSION['phoneNumber'] : "";
+$remainingTime = isset($_SESSION['remainingTime']) ? $_SESSION['remainingTime'] : 0;
+$identity =  isset($_SESSION['routername']) ? $_SESSION['routername'] : "";
+//$TransactionCode =  isset($_SESSION['TransactionCode']) ? $_SESSION['TransactionCode'] : "";
 
+// The rest of your connect.php code remains unchanged
 $routers = [
     'piusMikrotik' => [
         'ip' => 'app.vexifi.com:558',
@@ -28,21 +30,37 @@ $routers = [
     // Add more routers here as needed
 ];
 
-
 // Check if remaining time is negative
 if ($remainingTime < 0) {
     header("Location: http://blackieNetworks.com/login");
     exit();
 }
 
-// Check if the identity exists in the routers array
 if (array_key_exists($identity, $routers)) {
     $router_ip = $routers[$identity]['ip'];
     $router_username = $routers[$identity]['username'];
     $router_password = $routers[$identity]['password'];
 } else {
     // Redirect or handle error if the identity is not recognized
-    echo "Unknown router identity.";
+    echo '
+    <!DOCTYPE HTML>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./assets/styles/tailwind.min.css">
+        <title>Error</title>
+    </head>
+    <body class="bg-blue-500 flex items-center justify-center min-h-screen">
+        <div class="bg-white shadow-md rounded px-8 py-6 max-w-lg text-center">
+            <h1 class="text-2xl font-semibold text-red-500 mb-4">Unknown Router Identity</h1>
+            <p class="text-gray-600">The identity you provided does not match any recognized router.</p>
+            <a href="http://blackieNetworks.com/login" class="inline-block mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
+                Go Back
+            </a>
+        </div>
+    </body>
+    </html>';
     exit();
 }
 
@@ -99,6 +117,7 @@ foreach ($timeRanges as $range) {
         break;
     }
 }
+$_SESSION['username'] = $username;
 
 // Connect to MikroTik router via API
 $API = new RouterosAPI();
@@ -112,61 +131,19 @@ if ($API->connect($router_ip, $router_username, $router_password)) {
     $READ = $API->read(false);
     $activeDevices = $API->parseResponse($READ);
 
-    
-    // If the user has more than two devices connected, display the form to disconnect
-    if (count($activeDevices) >= 2) {
-        ?>
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <title>Device Limit Reached</title>
-            <link rel="stylesheet" href="../public/assets/styles/tailwind.min.css"> 
-        </head>
-        <body class="bg-red-400 flex items-center justify-center min-h-screen">
-            <div class="bg-white p-10 rounded shadow-md text-center h-80">
-                <h4 class="text-2xl font-bold mb-4 text-red-600">Maximum Devices Connected for <?php echo $phoneNumber; ?></h4>
-                <p class="text-lg font-semibold mb-6">You have reached the maximum number of connected devices per package.</p>
-    
-                <!-- Form for disconnecting devices -->
-                <form method="post" action="">
-                    <span class="text-gray-900">Contact this <>0796869402/0791218989<> to disconnect one device for you </span>
-                    <ul class="mb-4">
-                        <?php foreach ($activeDevices as $device) { ?>
-                            <li class="text-2xl flex justify-between bg-gray-100 p-2 rounded my-2">
-                                <span>Device IP: <?php echo $device['address']; ?></span>
-                                <!-- Disconnect button -->
-                                <button name="disconnect" value="<?php echo $device['.id']; ?>" class="text-red-500 hover:text-red-700">
-                                    Disconnect
-                                </button>
-                            </li>
-                        <?php } ?>
-                    </ul>
-                </form>
-            </div>
-        </body>
-        </html>
-        <?php
-        exit();
-    }
-    
-    // If disconnect button is clicked, remove the selected device
-    if (isset($_POST['disconnect'])) {
-        $deviceId = $_POST['disconnect'];
-    
-        // Remove the device from the active hotspot users
+
+     // If the user has more than one device connected, find the oldest session and remove it
+     if (count($activeDevices) >= 2) {
+        // Sort active devices by uptime (assumes 'uptime' field exists and is in seconds)
+        usort($activeDevices, function ($a, $b) {
+            return strtotime($b['uptime']) - strtotime($a['uptime']);
+        });
+
+        // Remove the device with the longest uptime
+        $longestLoggedInDevice = $activeDevices[0]['.id'];
         $API->write('/ip/hotspot/active/remove', false);
-        $API->write('=.id=' . $deviceId, true);
-        $READ = $API->read(false);
-        $ARRAY = $API->parseResponse($READ);
-    
-        // Handle success or error
-        if (isset($ARRAY['!trap'])) {
-            echo "Error in disconnecting the device.";
-        } else {
-            echo "Device disconnected successfully.";
-            // You can refresh the page or redirect after the successful disconnection
-            header("Refresh:0");
-        }
+        $API->write('=.id=' . $longestLoggedInDevice, true);
+        $API->read();
     }
 
     // Proceed with the login or account creation as before
@@ -185,7 +162,33 @@ if ($API->connect($router_ip, $router_username, $router_password)) {
         $ARRAY = $API->parseResponse($READ);
 
         if (isset($ARRAY['!trap'])) {
-            echo "Error in creating an account for you";
+            // Error in creating an account
+            echo '
+            <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Blackie Networks</title>
+            <link rel="stylesheet" href="./assets/styles/tailwind.min.css">
+        </head>
+        <body>
+            <div class="w-full max-w-md mx-auto mt-6">
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                    <strong class="font-bold">Account Creation Error!</strong>
+                    <span class="block sm:inline">There was an issue creating an account for you. Please try again later.</span>
+                    <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                        <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 5.652a1 1 0 00-1.414 0L10 8.586 7.066 5.652a1 1 0 10-1.414 1.414L8.586 10l-2.934 2.934a1 1 0 101.414 1.414L10 11.414l2.934 2.934a1 1 0 101.414-1.414L11.414 10l2.934-2.934a1 1 0 000-1.414z"/></svg>
+                    </span>
+                </div>
+                <div class="mt-4">
+                    <button onclick="window.location.href=\'http://blackieNetworks.com/login\'" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Retry Account Creation
+                    </button>
+                </div>
+            </div>
+            </body>
+            </html>';
             exit();
         }
     } else {
@@ -197,7 +200,20 @@ if ($API->connect($router_ip, $router_username, $router_password)) {
             $ARRAY = $API->parseResponse($READ);
 
             if (isset($ARRAY['!trap'])) {
-                echo "Error in setting up your account. Please contact admin. Error: " . $ARRAY['!trap'][0]['message'];
+                // Error in setting up the account
+                echo '
+                <div class="w-full max-w-md mx-auto mt-6">
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                        <strong class="font-bold">Account Setup Failed!</strong>
+                        <span class="block sm:inline">There was an error setting up your account. Please contact the admin.</span>
+                        <span class="block sm:inline mt-2 text-sm">
+                            Error Details: ' . htmlspecialchars($ARRAY['!trap'][0]['message']) . '
+                        </span>
+                        <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                            <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 5.652a1 1 0 00-1.414 0L10 8.586 7.066 5.652a1 1 0 10-1.414 1.414L8.586 10l-2.934 2.934a1 1 0 101.414 1.414L10 11.414l2.934 2.934a1 1 0 101.414-1.414L11.414 10l2.934-2.934a1 1 0 000-1.414z"/></svg>
+                        </span>
+                    </div>
+                </div>';
                 exit();
             }
         }
@@ -209,15 +225,22 @@ if ($API->connect($router_ip, $router_username, $router_password)) {
     ?>
     <!DOCTYPE HTML>
     <html>
+
     <head>
         <link rel="stylesheet" href="../public/assets/styles/tailwind.min.css">
         <style>
             @keyframes loading {
-                0% { left: -100%; }
-                100% { left: 100%; }
+                0% {
+                    left: -100%;
+                }
+
+                100% {
+                    left: 100%;
+                }
             }
         </style>
     </head>
+
     <body class="bg-blue-50 flex items-center justify-center min-h-screen">
         <div id="details" class="bg-white p-10 rounded shadow-md text-center">
             <h4 class="text-2xl font-bold mb-4">Details Verification Ongoing</h4>
@@ -243,15 +266,18 @@ if ($API->connect($router_ip, $router_username, $router_password)) {
             <input name="password" type="hidden" />
         </form>
     </body>
+
     </html>
-    <?php
+<?php
 } else {
-    ?>
+?>
     <!DOCTYPE HTML>
     <html>
+
     <head>
         <link rel="stylesheet" href="../public/assets/styles/tailwind.min.css">
     </head>
+
     <body class="flex items-center justify-center min-h-screen bg-blue-50">
         <div class="text-center">
             <h3 class="text-2xl text-blue-600 font-bold">
@@ -264,7 +290,8 @@ if ($API->connect($router_ip, $router_username, $router_password)) {
             }, 1000);
         </script>
     </body>
+
     </html>
-    <?php
+<?php
 }
 ?>

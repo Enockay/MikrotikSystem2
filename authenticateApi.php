@@ -10,11 +10,11 @@ $link_login = "http://blackieNetworks.com/login";
 $link_login_only = "http://blackieNetworks.com/login";
 $linkorig = "https://www.google.com";
 
-$amount = isset($_POST['amount']) ? intval($_POST['amount']) : '0';
-$phoneNumber = isset($_POST['phoneNumber']) ? $_POST['phoneNumber'] : "0796869402";
-$identity = isset($_POST['routername']) ? $_POST['routername'] : "piusMikrotik";
+$phoneNumber = isset($_SESSION['phoneNumber']) ? $_SESSION['phoneNumber'] : "No phone number set";
+$identity =  isset($_SESSION['routername'])? $_SESSION['routername']:"";
+$amount = isset($_SESSION['amount']) ? $_SESSION['amount'] : "No amount set";
+//error_log($remainingTime , $phoneNumber,$identity);
 
-// Router connection details array
 $routers = [
     'piusMikrotik' => [
         'ip' => 'app.vexifi.com:558',
@@ -29,21 +29,31 @@ $routers = [
     // Add more routers here as needed
 ];
 
-
-// Check if remaining time is negative
-if ($amount < 0) {
-    header("Location: http://blackieNetworks.com/login");
-    exit();
-}
-
-// Check if the identity exists in the routers array
 if (array_key_exists($identity, $routers)) {
     $router_ip = $routers[$identity]['ip'];
     $router_username = $routers[$identity]['username'];
     $router_password = $routers[$identity]['password'];
 } else {
     // Redirect or handle error if the identity is not recognized
-    echo "Unknown router identity.";
+    echo '
+    <!DOCTYPE HTML>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./public/assets/styles/tailwind.min.css">
+        <title>Error</title>
+    </head>
+    <body class="bg-blue-500 flex items-center justify-center min-h-screen">
+        <div class="bg-white shadow-md rounded px-8 py-6 max-w-lg text-center">
+            <h1 class="text-2xl font-semibold text-red-500 mb-4">Unknown Router Identity</h1>
+            <p class="text-gray-600">The identity you provided does not match any recognized router.</p>
+            <a href="http://blackieNetworks.com/login" class="inline-block mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
+                Go Back
+            </a>
+        </div>
+    </body>
+    </html>';
     exit();
 }
 // Determine username based on amount
