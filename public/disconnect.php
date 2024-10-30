@@ -15,8 +15,8 @@ $remainingTime = isset($_SESSION['remainingTime']) ? $_SESSION['remainingTime'] 
 $identity =  isset($_SESSION['routername']) ? $_SESSION['routername'] : "";
 $username =  isset($_SESSION['username']) ? $_SESSION['username'] : "";
 
-if (isset($_POST['disconnectDeviceId']) && !empty($_POST['disconnectDeviceId'])) {
-    $deviceId = $_POST['disconnectDeviceId'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $deviceIp = $_POST['device_ip'] ?? '';
     // Connect to MikroTik router via API
 $API = new RouterosAPI();
 $API->debug = false;

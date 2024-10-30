@@ -13,7 +13,7 @@ $linkorig = "https://www.google.com";
 $phoneNumber = isset($_SESSION['phoneNumber']) ? $_SESSION['phoneNumber'] : "";
 $remainingTime = isset($_SESSION['remainingTime']) ? $_SESSION['remainingTime'] : 0;
 $identity =  isset($_SESSION['routername']) ? $_SESSION['routername'] : "";
-//$TransactionCode =  isset($_SESSION['TransactionCode']) ? $_SESSION['TransactionCode'] : "";
+$TransactionCode =  isset($_SESSION['TransactionCode']) ? $_SESSION['TransactionCode'] : "";
 
 // The rest of your connect.php code remains unchanged
 $routers = [
@@ -132,18 +132,72 @@ if ($API->connect($router_ip, $router_username, $router_password)) {
     $activeDevices = $API->parseResponse($READ);
 
 
-     // If the user has more than one device connected, find the oldest session and remove it
-     if (count($activeDevices) >= 2) {
-        // Sort active devices by uptime (assumes 'uptime' field exists and is in seconds)
-        usort($activeDevices, function ($a, $b) {
-            return strtotime($b['uptime']) - strtotime($a['uptime']);
-        });
+    // If the user has more than one device connected, find the oldest session and remove it
+    if (count($activeDevices) >= 2) {
+?>
+       <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Device Limit Reached</title>
+    <link rel="stylesheet" href="../public/assets/styles/tailwind.min.css">
+</head>
+<body class="bg-red-400 flex items-center justify-center min-h-screen">
 
-        // Remove the device with the longest uptime
-        $longestLoggedInDevice = $activeDevices[0]['.id'];
-        $API->write('/ip/hotspot/active/remove', false);
-        $API->write('=.id=' . $longestLoggedInDevice, true);
-        $API->read();
+    <div class="bg-white p-10 rounded shadow-md text-center h-80">
+        <h4 class="text-2xl font-bold mb-4 text-red-600">Maximum Devices Connected for <?php echo $phoneNumber; ?></h4>
+        <p class="text-lg font-semibold mb-6">You have reached the maximum number of connected devices per package.</p>
+
+        <ul class="mb-4">
+            <?php foreach ($activeDevices as $device) { ?>
+                <li class="text-2xl flex justify-between bg-gray-100 p-2 rounded my-2">
+                    <span>Device IP: <?php echo $device['address']; ?></span>
+                    <button onclick="openModal('<?php echo $device['address']; ?>')" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Disconnect</button>
+                </li>
+            <?php } ?>
+        </ul>
+    </div>
+
+    <!-- Modal -->
+    <div id="transactionModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white p-6 rounded shadow-md text-center w-80">
+            <h3 class="text-lg font-bold mb-4 text-red-600">Enter Mpesa Transaction Code For This Package</h3>
+            <form id="disconnectForm" method="post" action="disconnect.php">
+                <input type="hidden" name="device_ip" id="deviceIp">
+                <input type="text" name="transaction_code" id="transactionCode" placeholder="Transaction Code" required class="border p-2 rounded w-full mb-4" aria-placeholder="STVXXXXXR">
+                <button type="button" onclick="validateAndSubmit()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Submit</button>
+                <button type="button" onclick="closeModal()" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 mt-2">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openModal(deviceIp) {
+            document.getElementById('deviceIp').value = deviceIp;
+            document.getElementById('transactionModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('transactionModal').classList.add('hidden');
+            document.getElementById('transactionCode').value = ''; // Clear the input field
+        }
+
+        function validateAndSubmit() {
+            const transactionCode = document.getElementById('transactionCode').value;
+
+            if (transactionCode === "<?php echo $TransactionCode; ?>") { // Validate transaction code here
+                document.getElementById('disconnectForm').submit();
+            } else {
+                alert("Invalid transaction code. Please try again.");
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+
+    <?php
     }
 
     // Proceed with the login or account creation as before
