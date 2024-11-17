@@ -30,7 +30,7 @@ function logMessage(string $message): void
     // Combine all details into the log message
     $formattedMessage = "{$timestamp} [{$requestMethod}] {$message} in {$file} on line {$line}";
     
-    file_put_contents($logFile, "{$formattedMessage}\n", FILE_APPEND);
+    //file_put_contents($logFile, "{$formattedMessage}\n", FILE_APPEND);
 }
 // Function to send JavaScript updates to the client
 function sendJsUpdate(string $message): void

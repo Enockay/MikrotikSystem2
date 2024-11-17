@@ -29,7 +29,7 @@
     $linkorig = "https://www.google.com";
 
     $phoneNumber = isset($_SESSION['phoneNumber']) ? $_SESSION['phoneNumber'] : "";
-    $identity =  isset($_SESSION['routername'])? $_SESSION['routername']:"enockMikrotik";
+    $identity =  isset($_SESSION['routername'])? $_SESSION['routername']:"";
     $amount = isset($_SESSION['amount']) ? $_SESSION['amount'] : "";
     $TransactionCode =  isset($_SESSION['TransactionCode']) ? $_SESSION['TransactionCode'] : "";
     $group = "primary";
