@@ -1,0 +1,312 @@
+[2024-11-15 17:12:24] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 17:12:24] Checking if the user exists with phone number: 254
+[2024-11-15 17:12:25] User exists: ID *4E
+[2024-11-15 17:12:25] Assigning profile: *C to user 254
+[2024-11-15 17:12:28] Profile assigned successfully to user 254
+[2024-11-15 17:12:28] Disconnected from MikroTik API.
+[2024-11-15 17:19:24] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 17:19:24] Checking if the user exists with phone number: 254
+[2024-11-15 17:19:27] User exists: ID *4E
+[2024-11-15 17:19:27] Searching for profile ID by name: 12hours
+[2024-11-15 17:19:30] Profile found: ID *D
+[2024-11-15 17:19:30] Assigning profile ID: *D to user 254
+[2024-11-15 17:19:32] Profile assigned successfully to user 254
+[2024-11-15 17:19:32] Disconnected from MikroTik API.
+[2024-11-15 19:59:31] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 19:59:33] User exists: ID *4E
+[2024-11-15 19:59:34] Profile found: ID *D
+[2024-11-15 20:03:43] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 20:03:46] User exists: ID *4E
+[2024-11-15 20:03:47] Assigning new profile to user 254
+[2024-11-15 20:03:50] Profile assigned successfully to user 254
+[2024-11-15 20:04:54] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 20:04:55] User exists: ID *4E
+[2024-11-15 20:04:58] Assigning new profile to user 254
+[2024-11-15 20:04:59] Profile assigned successfully to user 254
+[2024-11-15 20:06:18] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 20:06:19] User exists: ID *4E
+[2024-11-15 20:06:22] Assigning new profile to user 254
+[2024-11-15 20:06:25] Profile assigned successfully to user 254
+[2024-11-15 20:07:45] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 20:07:47] User exists: ID *4E
+[2024-11-15 20:07:48] Assigning new profile to user 254
+[2024-11-15 20:07:50] Profile assigned successfully to user 254
+[2024-11-15 20:12:12] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 20:12:15] User does not exist: 254
+[2024-11-15 20:14:23] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 20:14:25] User exists: ID *4E
+[2024-11-15 20:14:27] Assigning new profile to user 254
+[2024-11-15 20:14:29] Profile assigned successfully to user 254
+[2024-11-15 20:15:40] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 20:15:42] User exists: ID *4E
+[2024-11-15 20:15:42] Assigning new profile to user 254
+[2024-11-15 20:15:43] Profile assigned successfully to user 254
+[2024-11-15 20:19:54] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 20:19:54] User found: ID *4E
+[2024-11-15 20:19:56] New profile 1day assigned to user 254
+[2024-11-15 20:25:24] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 20:25:25] Existing user found in profile: ID *47. Deleting...
+[2024-11-15 20:25:28] Error deleting user profile for 254
+[2024-11-15 20:25:28] Creating new user and assigning profile to 254
+[2024-11-15 20:25:28] Error creating new user: 254
+[2024-11-15 20:36:54] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 20:37:00] Added user successfully: 254
+[2024-11-15 20:37:03] Profile not found: 1day
+[2024-11-15 20:49:37] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 20:49:38] User exists: ID *4E
+[2024-11-15 20:49:38] Searching for profile ID by name: 
+[2024-11-15 22:24:24] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 22:24:27] Searching for profile ID by name: 
+[2024-11-15 22:25:36] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 22:25:42] Searching for profile ID by name: 
+[2024-11-15 22:28:19] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 22:28:23] Created user: 123
+[2024-11-15 22:28:26] Profile found: ID *C
+[2024-11-15 22:28:27] Assigned profile ID *C to user 123
+[2024-11-15 22:29:46] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 22:29:46] User exists: ID *51
+[2024-11-15 22:29:49] Profile found: ID *F
+[2024-11-15 22:29:50] Assigned profile ID *F to user 123
+[2024-11-15 22:32:14] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 22:32:18] Created user: 123
+[2024-11-15 22:32:18] Profile not found: 1hour
+[2024-11-15 22:47:56] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 22:47:58] User exists: ID *51
+[2024-11-15 22:48:00] Profile found: ID *F
+[2024-11-15 22:48:03] Assigned profile ID *F to user 123
+[2024-11-15 22:50:18] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 22:50:18] User exists: ID *51
+[2024-11-15 22:50:21] Profile not found: 1hour
+[2024-11-15 22:51:27] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 22:51:28] User exists: ID *51
+[2024-11-15 22:51:30] Profile found: ID *C
+[2024-11-15 22:51:31] Assigned profile ID *C to user 123
+[2024-11-15 22:52:41] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 22:52:42] User exists: ID *51
+[2024-11-15 22:52:43] Profile found: ID *5
+[2024-11-15 22:52:43] Assigned profile ID *5 to user 123
+[2024-11-15 22:54:36] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 22:54:36] User exists: ID *51
+[2024-11-15 22:54:37] Profile found: ID *7
+[2024-11-15 22:54:38] Assigned profile ID *7 to user 123
+[2024-11-15 23:48:46] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 23:48:47] User exists: ID *51
+[2024-11-15 23:48:48] Profile found: ID *7
+[2024-11-15 23:48:49] Removed existing profile with ID *4C for user 123
+[2024-11-15 23:48:50] Assigned profile ID *7 to user 123
+[2024-11-15 23:49:52] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-15 23:49:53] User exists: ID *51
+[2024-11-15 23:49:53] Profile found: ID *C
+[2024-11-15 23:49:56] Removed existing profile with ID *4F for user 123
+[2024-11-15 23:49:56] Assigned profile ID *C to user 123
+[2024-11-16 00:00:04] Failed to connect to MikroTik API.
+[2024-11-16 00:00:44] Failed to connect to MikroTik API.
+[2024-11-16 00:01:17] Failed to connect to MikroTik API.
+[2024-11-16 00:42:34] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 00:42:35] User exists: ID *51
+[2024-11-16 00:42:36] Profile found: ID *C
+[2024-11-16 00:42:37] No existing profiles for user 123
+[2024-11-16 00:42:37] Assigned profile ID *C to user 123
+[2024-11-16 00:42:41] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 00:42:42] User exists: ID *51
+[2024-11-16 00:42:42] Profile found: ID *C
+[2024-11-16 00:42:44] Removed existing profile with ID *53 for user 123
+[2024-11-16 00:42:45] Assigned profile ID *C to user 123
+[2024-11-16 00:42:48] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 00:42:49] User exists: ID *51
+[2024-11-16 00:42:50] Profile found: ID *C
+[2024-11-16 00:42:51] Removed existing profile with ID *54 for user 123
+[2024-11-16 00:42:52] Assigned profile ID *C to user 123
+[2024-11-16 00:42:56] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 00:42:56] User exists: ID *51
+[2024-11-16 00:42:57] Profile found: ID *C
+[2024-11-16 00:42:58] Removed existing profile with ID *55 for user 123
+[2024-11-16 00:42:59] Assigned profile ID *C to user 123
+[2024-11-16 00:43:04] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 00:43:05] User exists: ID *51
+[2024-11-16 00:43:06] Profile found: ID *C
+[2024-11-16 00:43:07] Removed existing profile with ID *56 for user 123
+[2024-11-16 00:43:08] Assigned profile ID *C to user 123
+[2024-11-16 00:43:11] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 00:43:12] User exists: ID *51
+[2024-11-16 00:43:13] Profile found: ID *C
+[2024-11-16 00:43:14] Removed existing profile with ID *57 for user 123
+[2024-11-16 00:43:15] Assigned profile ID *C to user 123
+[2024-11-16 00:43:19] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 00:43:20] User exists: ID *51
+[2024-11-16 00:43:21] Profile found: ID *C
+[2024-11-16 00:43:22] Removed existing profile with ID *58 for user 123
+[2024-11-16 00:43:23] Assigned profile ID *C to user 123
+[2024-11-16 00:43:27] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 00:43:27] User exists: ID *51
+[2024-11-16 00:43:28] Profile found: ID *C
+[2024-11-16 00:43:29] Removed existing profile with ID *59 for user 123
+[2024-11-16 00:43:30] Assigned profile ID *C to user 123
+[2024-11-16 00:43:34] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 00:43:35] User exists: ID *51
+[2024-11-16 00:43:35] Profile found: ID *C
+[2024-11-16 00:43:37] Removed existing profile with ID *5A for user 123
+[2024-11-16 00:43:37] Assigned profile ID *C to user 123
+[2024-11-16 00:43:52] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 00:43:53] Created user: enock
+[2024-11-16 00:43:54] Profile found: ID *C
+[2024-11-16 00:43:55] No existing profiles for user enock
+[2024-11-16 00:43:56] Assigned profile ID *C to user enock
+[2024-11-16 00:51:15] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 00:51:16] User exists: ID *53
+[2024-11-16 00:51:17] Profile found: ID *5
+[2024-11-16 00:51:18] Removed existing profile with ID *5C for user enock
+[2024-11-16 00:51:19] Assigned profile ID *5 to user enock
+[2024-11-16 00:55:37] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 00:55:38] Created user: 456
+[2024-11-16 00:55:39] Profile found: ID *F
+[2024-11-16 00:55:40] No existing profiles for user 456
+[2024-11-16 00:55:41] Assigned profile ID *F to user 456
+[2024-11-16 09:54:03] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 09:54:08] Created user: 456
+[2024-11-16 09:54:08] Profile not found: 1hour
+[2024-11-16 09:54:43] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 09:54:44] User exists: ID *54
+[2024-11-16 09:54:45] Profile found: ID *F
+[2024-11-16 09:54:47] Removed existing profile with ID *5E for user 456
+[2024-11-16 09:54:48] Assigned profile ID *F to user 456
+[2024-11-16 10:10:37] Connected to MikroTik router at app.vexifi.com:558.
+[2024-11-16 10:10:38] Queried 0 user profiles successfully.
+[2024-11-16 10:10:38] Disconnected from MikroTik router.
+[2024-11-16 10:12:13] Error: Failed to connect to MikroTik router.
+[2024-11-16 10:12:13] Disconnected from MikroTik router.
+[2024-11-16 10:12:59] Error: Failed to connect to MikroTik router.
+[2024-11-16 10:12:59] Disconnected from MikroTik router.
+[2024-11-16 10:13:50] Connected to MikroTik router at app.vexifi.com:2159.
+[2024-11-16 10:13:51] Queried 12 user profiles successfully.
+[2024-11-16 10:13:51] Disconnected from MikroTik router.
+[2024-11-16 10:40:00] Business Name: blackie-networks
+[2024-11-16 10:40:00] Error: Unknown Router Identity - 
+[2024-11-16 10:41:09] Business Name: blackie-networks
+[2024-11-16 10:41:09] searching for a matching profile amount: 180
+[2024-11-16 10:41:09] found matching profile: Array
+[2024-11-16 10:41:12] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 10:41:13] Created user: 254796869403
+[2024-11-16 10:41:14] Profile not found: 
+[2024-11-16 10:44:29] Business Name: blackie-networks
+[2024-11-16 10:44:29] searching for a matching profile amount: 180
+[2024-11-16 10:44:29] found matching profile: Array
+[2024-11-16 10:44:31] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 10:44:32] User exists: ID *56
+[2024-11-16 10:44:33] Profile not found: Array
+[2024-11-16 10:46:16] Business Name: blackie-networks
+[2024-11-16 10:46:16] searching for a matching profile amount: 180
+[2024-11-16 10:46:16] found matching profile: Array
+[2024-11-16 10:46:20] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 10:46:22] User exists: ID *56
+[2024-11-16 10:46:23] Profile not found: Array
+[2024-11-16 10:49:25] Business Name: blackie-networks
+[2024-11-16 10:49:25] searching for a matching profile amount: 180
+[2024-11-16 10:49:33] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 10:49:34] User exists: ID *56
+[2024-11-16 10:49:35] Profile found: ID *5
+[2024-11-16 10:49:37] No existing profiles for user 254796869403
+[2024-11-16 10:49:40] Assigned profile ID *5 to user 254796869403
+[2024-11-16 12:53:44] Business Name: blackie-networks
+[2024-11-16 12:53:44] searching for a matching profile amount: 35
+[2024-11-16 12:53:47] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 12:53:48] Created user: 2547956892
+[2024-11-16 12:53:49] Profile found: ID *C
+[2024-11-16 12:53:49] Assigned profile ID *C to user 2547956892
+[2024-11-16 13:20:03] Business Name: blackie-networks
+[2024-11-16 13:20:03] searching for a matching profile amount: 35
+[2024-11-16 13:22:38] Business Name: blackie-networks
+[2024-11-16 13:22:38] searching for a matching profile amount: 5
+[2024-11-16 14:02:56] Business Name: blackie-networks
+[2024-11-16 14:02:56] Searching for a matching profile amount: 5
+[2024-11-16 14:02:59] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 14:03:02] User not found. Creating user...
+[2024-11-16 14:03:03] User created in primary group.
+[2024-11-16 14:05:03] Business Name: blackie-networks
+[2024-11-16 14:05:03] Searching for a matching profile amount: 5
+[2024-11-16 14:05:06] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 14:05:06] User not found. Creating user...
+[2024-11-16 14:05:07] User created in primary group.
+[2024-11-16 14:19:41] Business Name: blackie-networks
+[2024-11-16 14:19:41] Searching for a matching profile amount: 5
+[2024-11-16 14:19:44] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 14:19:47] User exists with ID: *5B
+[2024-11-16 14:21:03] Business Name: blackie-networks
+[2024-11-16 14:21:03] Searching for a matching profile amount: 5
+[2024-11-16 14:21:11] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 14:21:14] User not found. Creating user...
+[2024-11-16 14:21:17] User created in primary group.
+[2024-11-16 14:21:20] No existing profiles for user 25470024568
+[2024-11-16 14:26:09] Business Name: blackie-networks
+[2024-11-16 14:26:09] Searching for a matching profile amount: 10
+[2024-11-16 14:26:17] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 14:26:18] User exists with ID: *5B
+[2024-11-16 14:33:24] Business Name: blackie-networks
+[2024-11-16 14:33:24] Searching for a matching profile amount: 10
+[2024-11-16 14:33:27] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 14:33:29] User exists with ID: *5B
+[2024-11-16 14:33:35] Assigned added a secondary user and a profile to user.
+[2024-11-16 14:54:06] Business Name: blackie-networks
+[2024-11-16 14:54:07] Searching for a matching profile with remaining time: 400 seconds
+[2024-11-16 14:54:07] No profile matched for the remaining time: 400
+[2024-11-16 14:54:09] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 14:54:12] User not found. Creating user...
+[2024-11-16 14:54:12] User created in primary group.
+[2024-11-16 15:44:35] Business Name: blackie-networks
+[2024-11-16 15:44:35] Searching for a matching profile with remaining time: 1000 seconds
+[2024-11-16 15:44:35] Matched Profile: 2min with ID: *12
+[2024-11-16 15:44:36] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 15:44:39] User not found. Creating user...
+[2024-11-16 15:44:40] User created in primary group.
+[2024-11-16 15:44:41] No existing profiles for user 
+[2024-11-16 15:45:39] Business Name: blackie-networks
+[2024-11-16 15:45:39] Searching for a matching profile with remaining time: 1000 seconds
+[2024-11-16 15:45:39] Matched Profile: 2min with ID: *12
+[2024-11-16 15:45:45] Connected to MikroTik API: app.vexifi.com:2159
+[2024-11-16 15:45:46] User not found. Creating user...
+[2024-11-16 15:45:47] User created in primary group.
+[2024-11-16 15:45:49] No existing profiles for user 12345678
+[2024-11-16 16:06:32] Connected to MikroTik router at app.vexifi.com:2159.
+[2024-11-16 16:06:33] Queried 13 user profiles successfully.
+[2024-11-16 16:06:33] Disconnected from MikroTik router.
+[2024-11-16 16:31:08] [GET] Business Name: blackie-networks in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/header.php on line 92
+[2024-11-16 16:31:08] [GET] searching for a matching profile amount:  in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/userman.php on line 97
+[2024-11-16 16:31:11] [GET] Connected to MikroTik API: app.vexifi.com:2159 in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/userman.php on line 109
+[2024-11-16 16:31:12] [GET] Created user:  in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/userman.php on line 128
+[2024-11-16 16:31:14] [GET] Profile not found:  in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/userman.php on line 186
+[2024-11-17 11:15:32] [GET] Business Name: blackie-networks in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/header.php on line 92
+[2024-11-17 11:15:32] [GET] Searching for a matching profile with remaining time: 0 seconds in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 39
+[2024-11-17 11:15:32] [GET] No profile matched for the remaining time: 0 in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 53
+[2024-11-17 11:15:35] [GET] Connected to MikroTik API: app.vexifi.com:2159 in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 76
+[2024-11-17 11:15:38] [GET] User not found. Creating user... in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 141
+[2024-11-17 11:15:39] [GET] User created in primary group. in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 151
+[2024-11-17 11:17:12] [GET] Business Name: blackie-networks in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/header.php on line 92
+[2024-11-17 11:17:12] [GET] Searching for a matching profile with remaining time: 40000 seconds in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 39
+[2024-11-17 11:17:12] [GET] Matched Profile: 6hours with ID: *E in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 51
+[2024-11-17 11:17:13] [GET] Connected to MikroTik API: app.vexifi.com:2159 in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 76
+[2024-11-17 11:17:14] [GET] User exists with ID: *58 in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 87
+[2024-11-17 11:17:15] [GET] Assigned added a secondary user and a profile to user. in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 129
+[2024-11-17 11:18:38] [GET] Business Name: blackie-networks in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/header.php on line 92
+[2024-11-17 11:18:38] [GET] Searching for a matching profile with remaining time: 40000 seconds in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 39
+[2024-11-17 11:18:38] [GET] Matched Profile: 6hours with ID: *E in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 51
+[2024-11-17 11:18:39] [GET] Connected to MikroTik API: app.vexifi.com:2159 in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 76
+[2024-11-17 11:18:40] [GET] User exists with ID: *58 in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 87
+[2024-11-17 11:18:41] [GET] Assigned added a secondary user and a profile to user. in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 129
+[2024-11-17 11:49:39] [GET] Business Name: blackie-networks in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/header.php on line 92
+[2024-11-17 11:49:39] [GET] Searching for a matching profile with remaining time: 40000 seconds in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 39
+[2024-11-17 11:49:39] [GET] Matched Profile: 6hours with ID: *E in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 51
+[2024-11-17 11:49:42] [GET] Connected to MikroTik API: app.vexifi.com:2159 in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 76
+[2024-11-17 11:49:45] [GET] User not found. Creating user... in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 170
+[2024-11-17 11:49:46] [GET] User created in primary group. in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 180
+[2024-11-17 11:49:49] [GET] No existing profiles for user 254796869402 in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 200
+[2024-11-17 12:23:55] [GET] Business Name: blackie-networks in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/header.php on line 92
+[2024-11-17 12:23:55] [GET] Searching for a matching profile with remaining time: 40000 seconds in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 39
+[2024-11-17 12:23:55] [GET] Matched Profile: 6hours with ID: *E in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 51
+[2024-11-17 12:23:56] [GET] Connected to MikroTik API: app.vexifi.com:2159 in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 76
+[2024-11-17 12:23:57] [GET] User exists with ID: *58 in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 87
+[2024-11-17 12:23:59] [GET] Removed most recent session for user: 254796869402 with ID: *29 in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 127
+[2024-11-17 12:40:22] [GET] Business Name: blackie-networks in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/header.php on line 92
+[2024-11-17 12:40:22] [GET] Searching for a matching profile with remaining time: 40000 seconds in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 39
+[2024-11-17 12:40:22] [GET] Matched Profile: 6hours with ID: *E in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 51
+[2024-11-17 12:40:24] [GET] Connected to MikroTik API: app.vexifi.com:2159 in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 76
+[2024-11-17 12:40:26] [GET] User exists with ID: *58 in /home/enockay/newMikrotikSystem/MikrotikSystem2/public/usermanLogin.php on line 87

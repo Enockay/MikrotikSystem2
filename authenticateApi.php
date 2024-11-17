@@ -16,17 +16,8 @@ $amount = isset($_SESSION['amount']) ? $_SESSION['amount'] : "No amount set";
 //error_log($remainingTime , $phoneNumber,$identity);
 
 $routers = [
-    'piusMikrotik' => [
-        'ip' => 'app.vexifi.com:558',
-        'username' => 'api',
-        'password' => 'enock'
-    ],
-    'enockMikrotik' => [
-        'ip' => 'app.vexifi.com:2159',
-        'username' => 'api',
-        'password' => 'enock'
-    ],
-    // Add more routers here as needed
+    'piusMikrotik' => ['ip' => 'id-40.hostddns.us:14182', 'username' => 'api', 'password' => 'enock'],
+    'enockMikrotik' => ['ip' => 'app.vexifi.com:2159', 'username' => 'api', 'password' => 'enock']
 ];
 
 if (array_key_exists($identity, $routers)) {

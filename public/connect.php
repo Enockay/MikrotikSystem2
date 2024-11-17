@@ -17,17 +17,8 @@ $TransactionCode =  isset($_SESSION['TransactionCode']) ? $_SESSION['Transaction
 
 // The rest of your connect.php code remains unchanged
 $routers = [
-    'piusMikrotik' => [
-        'ip' => 'app.vexifi.com:558',
-        'username' => 'api',
-        'password' => 'enock'
-    ],
-    'enockMikrotik' => [
-        'ip' => 'app.vexifi.com:2159',
-        'username' => 'api',
-        'password' => 'enock'
-    ],
-    // Add more routers here as needed
+    'piusMikrotik' => ['ip' => 'id-40.hostddns.us:14182', 'username' => 'api', 'password' => 'enock'],
+    'enockMikrotik' => ['ip' => 'app.vexifi.com:2159', 'username' => 'api', 'password' => 'enock']
 ];
 
 // Check if remaining time is negative
@@ -155,6 +146,7 @@ if ($API->connect($router_ip, $router_username, $router_password)) {
                     <button onclick="openModal('<?php echo $device['address']; ?>')" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Disconnect</button>
                 </li>
             <?php } ?>
+            <h3 class="text-red-500 text-center">When you disconnect..  all devices under that account will be removed</h3>
         </ul>
     </div>
 
@@ -195,9 +187,9 @@ if ($API->connect($router_ip, $router_username, $router_password)) {
 
 </body>
 </html>
-
-
     <?php
+     exit();
+     $API->disconnect();
     }
 
     // Proceed with the login or account creation as before
@@ -205,7 +197,7 @@ if ($API->connect($router_ip, $router_username, $router_password)) {
     $API->write('?name=' . $phoneNumber, true);
     $READ = $API->read(false);
     $ARRAY = $API->parseResponse($READ);
-
+    
     if (empty($ARRAY)) {
         $API->write('/ip/hotspot/user/add', false);
         $API->write('=name=' . $phoneNumber, false);

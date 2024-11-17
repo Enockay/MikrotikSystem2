@@ -1,42 +1,60 @@
 <?php
-header("Access-Control-Allow-Origin: https://admin-blackie-y3kg.vercel.app/");
-header("Access-Control-Allow-Methods: POST");
-header("Access-Control-Allow-Headers: Content-Type");
-require './public/header.php';
-require './public/routeros_api.class.php';
+// Include the RouterOS PHP API library
+require('routeros_api.class.php');
 
-// Check if the request method is POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Assuming the request contains appropriate authentication and authorization checks
+// Function to log messages
+function logMessage(string $message): void
+{
+    $logFile = __DIR__ . '/mikrotik_api.log';
+    $timestamp = date('[Y-m-d H:i:s]');
+    file_put_contents($logFile, "{$timestamp} {$message}\n", FILE_APPEND);
+}
 
-    $router_ip = 'app.vexifi.com:558'; // IP address of your MikroTik router
-    $router_username = 'enock'; // RouterOS username
-    $router_password = 'enockay'; // RouterOS password
+// Router connection details
+$routerIp = 'app.vexifi.com:2159'; // Replace with your router's IP
+$username = 'api';        // Replace with your API username
+$password = 'enock';     // Replace with your API password
+             // Default API port
 
-    // Connect to MikroTik router via API
-    $API = new RouterosAPI();
-    $API->debug = false;
+// Create RouterOS API instance
+$api = new RouterosAPI();
+$api->debug = true;
 
-    if ($API->connect($router_ip, $router_username, $router_password)) {
-        // Send command to reboot router
-        $API->write('/system/reboot', true);
-        $READ = $API->read(false);
-        $ARRAY = $API->parseResponse($READ);
+try {
+    // Connect to the router
+    if ($api->connect($routerIp, $username, $password, $port)) {
+        logMessage("Connected to MikroTik router at {$routerIp}.");
 
-        if (isset($ARRAY['!trap'])) {
-            // Error occurred while rebooting router
-            echo "Error in rebooting router. Error: " . $ARRAY['!trap'][0]['message'];
-        } else {
-            echo "Router reboot was successfully done.";
+        // Query all user profiles in User Manager
+        $api->write('/user-manager/profile/print', true);;
+        $profiles = $api->read();
+
+        // Display the results
+        echo "<h1>User Manager Profiles</h1>";
+        echo "<table border='1'><tr><th>ID</th><th>Name</th><th>Validity</th><th>Owner</th></tr>";
+        
+        foreach ($profiles as $profile) {
+            echo "<tr>";
+            echo "<td>" . htmlspecialchars($profile['.id'] ?? '') . "</td>";
+            echo "<td>" . htmlspecialchars($profile['name'] ?? '') . "</td>";
+            echo "<td>" . htmlspecialchars($profile['validity'] ?? '') . "</td>";
+            echo "<td>" . htmlspecialchars($profile['owner'] ?? '') . "</td>";
+            echo "</tr>";
         }
 
-        $API->disconnect();
+        echo "</table>";
+
+        // Log success
+        logMessage("Queried " . count($profiles) . " user profiles successfully.");
     } else {
-        echo "Failed to connect to MikroTik router.";
+        throw new Exception("Failed to connect to MikroTik router.");
     }
-} else {
-    // If request method is not POST, show error message
-    echo "Invalid request method. Only POST requests are allowed.";
+} catch (Exception $e) {
+    logMessage("Error: " . $e->getMessage());
+    echo "Error: " . htmlspecialchars($e->getMessage());
+} finally {
+    // Disconnect from the router
+    $api->disconnect();
+    logMessage("Disconnected from MikroTik router.");
 }
 ?>
-
